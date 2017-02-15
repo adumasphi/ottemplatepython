@@ -5,28 +5,10 @@ install:
   - curl http://ubuntu.openturns.org/openturns.org-repo.key | sudo apt-key add -
   - echo deb http://ubuntu.openturns.org precise main | sudo tee /etc/apt/sources.list.d/openturns.list
   - sudo apt-get update
-  - sudo apt-get -y install python-openturns python-sphinx python-nose python-numpy
-  - pip install numpydoc alabaster --user
+  - sudo apt-get -y install python-sphinx 
+  - sudo pip install numpydoc alabaster pytest
 
 script:
-  - nosetests
   - python setup.py install --user
   - cd doc && make html BUILDDIR=~/.local/share/ottemplate/doc
-
-after_success:
-  - test "$TRAVIS_PULL_REQUEST" = "false" -a "$TRAVIS_BRANCH" = "master" || exit 0
-  - git clone https://${GH_TOKEN}@github.com/openturns/openturns.github.io.git
-  - REPO_NAME=`echo "${TRAVIS_REPO_SLUG}" | cut -d "/" -f 2`
-  - mkdir -p openturns.github.io/${REPO_NAME}/${TRAVIS_BRANCH}
-  - cp -r ~/.local/share/${REPO_NAME}/doc/html/* openturns.github.io/${REPO_NAME}/${TRAVIS_BRANCH}
-  - cd openturns.github.io
-  - touch .nojekyll
-  - git config user.email "support@travis-ci.com"
-  - git config user.name "Travis CI"
-  - git add -A .
-  - git commit -a -m "Travis build ${REPO_NAME} ${TRAVIS_BUILD_NUMBER}"
-  - git push --quiet origin master > /dev/null 2>&1
-
-env:
-  global:
-    secure: "JdhE2vWM/utfPhreiNqmM5OKxKfYnv/ru/aGssK4EzKKhiL+kArBmvZqVYQ6zBmu+tWy7dl1jXsVMRGB5ERQiTGeB8YLmj3E4Wxxwl3OwLHw5m7Xf83VPi2YglUllHEOYGaDy2CLDtGGRHNgr4gopsZzPcHmTph8tLwog4/zemk0b2uJkFU4tZ9otHisYikoCz2Bymnh8MtDT6NK/2lUWjCvUkQye0mhruStB1sviDfck2w/Y2FBlfJ0aUJHgmdnygp+OBG3rEghd8B/JAIf2hnFwo7idU+vZKqG9qE6/XEGn7mvajsIxxaT61qDrsjrJL49rHwmYCF2xMiHUN+ZRUu+VOfJMx12BlBm6lNl/n1ekyiGOhfpKvLyEZFGPUBGv1ycmBqf7m6Bn6GFVkKGgMuIMya1Hljy0Yw9d/K5NSKQegDq2jMNrVfvfshFK9MZuUKKVcYbd7r5dVWpthAsiFwbKCJXHJhUvf844GEWMUk1Z0hYKBVWZpv8UNHd/P5I+TWaIS7/PimDP/ymU4Cp9c/guFxh/2YP4QIa9ZJhko7L51y2Merf3O8LDjTNRmrc7u9qpfQRtTLssZ9tLjeh+K/jNdblX9arV3IoR6IOcUpCfeof312zSIbKAeun1QyWSH63SzUZgqstGWmBpqR0NBtX5lpTTUMfIZjqDM3Vzow="
+  - py.test tests/
