@@ -10,5 +10,5 @@ install:
 
 script:
   - python setup.py install --user
-  - cd doc && make html BUILDDIR=~/.local/share/ottemplate/doc
   - py.test tests/
+  - cd doc && make html BUILDDIR=~/.local/share/ottemplate/doc

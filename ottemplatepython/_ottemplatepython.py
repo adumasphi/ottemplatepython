@@ -5,7 +5,7 @@
 Exemple class for the python template
 """
 
-__all__ = ['Test']
+__all__ = ['Test', 'myFunction']
 
 
 class Test():
@@ -15,6 +15,8 @@ class Test():
     Parameters
     ----------
     value : float
+        The considered value. The considered value.The considered value.
+        The considered value.The considered value.The considered value.
         The considered value.
     """
     def __init__(self, value):
@@ -42,3 +44,14 @@ class Test():
             The cube value.
         """
         return self.value**3
+
+
+def myFunction(arg):
+    """
+    My particular method
+
+    Parameters
+    ----------
+    arg : float
+    """
+    return arg

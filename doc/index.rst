@@ -1,4 +1,4 @@
-Welcome to otwrapy's documentation!
+Welcome to ottemplatepython's documentation!
 ===================================
 
 .. include:: ../README.rst

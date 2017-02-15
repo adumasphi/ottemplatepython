@@ -11,8 +11,7 @@ In a terminal, type in :
 
     $ python setup.py install
 
-Test are available in the 'tests' directory. They can be launched with
-the following command in a terminal in the otwrapy directory:
+Test are available in the 'tests' directory. They can be launched with the following command in a terminal in the ottemplatepython directory:
 
 .. code-block:: shell
 
@@ -20,4 +19,5 @@ the following command in a terminal in the otwrapy directory:
 
 Dependencies
 ------------
-- none
+- numpydoc
+- pytest

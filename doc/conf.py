@@ -38,7 +38,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'ottemplatepython'
-copyright = u'2016'
+copyright = u'2017'
 author = u'First Name'
 
 # List of patterns, relative to source directory, that match files and
@@ -59,27 +59,7 @@ todo_include_todos = True
 
 # -- Options for HTML output ----------------------------------------------
 
-import alabaster
-html_theme_path = [alabaster.get_path()]
-
-html_theme = 'alabaster'
-html_sidebars = {
-    '**': [
-        'about.html',
-        'navigation.html',
-        'relations.html',
-        'searchbox.html',
-        'donate.html',
-    ]
-}
-html_theme_options = {
-    'logo': 'LogoPhiHaut.png',
-    #'logo_name': 'ottemplatepython',
-    'description': 'Description of the module',
-    'github_repo': 'ottemplatepython',
-    'github_banner': True,
-    'show_related': True
-}
+html_theme = 'classic'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -97,6 +77,16 @@ html_last_updated_fmt = '%b %d, %Y'
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'ottemplatepythondoc'
+
+html_title = u'Template of python module'
+
+# A shorter title for the navigation bar.  Default is the same as html_title.
+html_short_title = 'Home ottemplatepython'
+
+
+# The name of an image file (relative to this directory) to place at the top
+# of the sidebar.
+html_logo = '_static/LogoPhiHautBlanc.png'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -124,7 +114,7 @@ latex_documents = [
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-#latex_logo = None
+# latex_logo = '_static/LogoPhiHaut.png'
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
